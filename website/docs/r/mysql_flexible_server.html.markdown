@@ -137,6 +137,8 @@ The following arguments are supported:
 
 * `tags` - (Optional) A mapping of tags which should be assigned to the MySQL Flexible Server.
 
+* `public_network_access_enabled` - (Optional) Whether or not public network access is allowed for this server. Defaults to `true` if using the public access connectivity method, otherwise `false`.
+
 ---
 
 A `customer_managed_key` block supports the following:
@@ -202,8 +204,6 @@ In addition to the Arguments listed above - the following Attributes are exporte
 * `id` - The ID of the MySQL Flexible Server.
 
 * `fqdn` - The fully qualified domain name of the MySQL Flexible Server.
-
-* `public_network_access_enabled` - Is the public network access enabled?
 
 * `replica_capacity` - The maximum number of replicas that a primary MySQL Flexible Server can have.
 

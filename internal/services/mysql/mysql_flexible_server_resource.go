@@ -296,6 +296,7 @@ func resourceMysqlFlexibleServer() *pluginsdk.Resource {
 
 			"public_network_access_enabled": {
 				Type:     pluginsdk.TypeBool,
+				Optional: true,
 				Computed: true,
 			},
 
@@ -742,6 +743,11 @@ func expandArmServerNetwork(d *pluginsdk.ResourceData) *servers.Network {
 
 	if v, ok := d.GetOk("private_dns_zone_id"); ok {
 		network.PrivateDnsZoneResourceId = utils.String(v.(string))
+	}
+
+	network.PublicNetworkAccess := servers.PublicNetworkAccessEnumEnabled
+	if v := d.Get("public_network_access_enabled").(bool); !v {
+		network.PublicNetworkAccess = servers.PublicNetworkAccessEnumDisabled
 	}
 
 	return &network
